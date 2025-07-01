@@ -29,6 +29,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background: hsl(20, 50%, 98%);
+  @apply font-redhat;
 }
 
 h1 {

@@ -1,0 +1,49 @@
+import type { CartItem } from "../../pages/product";
+
+interface UserCartProps {
+  list: CartItem[];
+}
+
+const ConfirmCart: React.FC<UserCartProps> = ({ list }) => {
+  return (
+    <>
+      <div className="flex flex-col space-y-4 w-full text-left">
+        {list.map((cart) => (
+          <>
+            <div
+              className="flex flex-col border-b border-[hsl(13,31%,94%)] pb-4 gap-[0.5em]"
+              key={cart.product.name}
+            >
+              <span className="text-black font-semibold">
+                {cart.product.name || ""}
+              </span>
+              <div className="flex items-center">
+                <span className="text-[hsl(14,86%,42%)] font-bold mr-3">
+                  {cart.quantity}x
+                </span>
+                <span className="text-[hsl(12,20%,44%)] flex">
+                  <p>@ ${cart.product.price.toFixed(2)}</p>&nbsp;
+                  <p className="font-bold">
+                    ${(cart.product.price * cart.quantity).toFixed(2)}
+                  </p>
+                </span>
+              </div>
+            </div>
+          </>
+        ))}
+        <div className="flex items-center justify-between">
+          <span className="text-[hsl(12,20%,44%)] font-semibold">
+            Order Total
+          </span>
+          <span className="text-3xl font-bold text-black">
+            $
+            {list
+              .reduce((sum, a) => sum + a.quantity * a.product.price, 0)
+              .toFixed(2)}
+          </span>
+        </div>
+      </div>
+    </>
+  );
+};
+export default ConfirmCart;
