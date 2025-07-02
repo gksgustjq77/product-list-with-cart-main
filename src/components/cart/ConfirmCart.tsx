@@ -42,6 +42,14 @@ const ConfirmCart: React.FC<UserCartProps> = ({ list }) => {
               .toFixed(2)}
           </span>
         </div>
+
+        <div className="flex items-center justify-center bg-[hsl(13,31%,94%)] p-4 px-6 rounded-[7px] text-sm">
+          <img src="/images/icon-carbon-neutral.svg"></img>&nbsp;
+          <span className="text-black flex">
+            This is a &nbsp;<p className="font-bold">carbon-neutral</p>&nbsp;
+            delivery
+          </span>
+        </div>
       </div>
     </>
   );

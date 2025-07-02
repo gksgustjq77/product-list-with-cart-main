@@ -14,24 +14,27 @@ const ProductImg: React.FC<ProductImgProps> = ({
   id,
   cart,
 }) => {
-  console.log("cart ", cart[id]);
   const CartBtnRendering = () => {
     if (cart && cart[id] > 0) {
-      return <CartCount id={id} cart={cart} onClick={onClick}></CartCount>;
-    } else return <AddCartBtn id={id} onClick={onClick}></AddCartBtn>;
+      return <CartCount id={id} cart={cart} onClick={onClick} />;
+    } else {
+      return <AddCartBtn id={id} onClick={onClick} />;
+    }
   };
+
+  const isInCart = cart[id] > 0;
+
   return (
-    <>
-      <div className="relative">
-        <img
-          src={imgUrl.tablet}
-          alt="product"
-          className="rounded-[20px] w-[300px]"
-        />
-        {CartBtnRendering()}
-        {/* <AddCartBtn id={id} onClick={onClick}></AddCartBtn> */}
-      </div>
-    </>
+    <div className="relative">
+      <img
+        src={imgUrl.tablet}
+        alt="product"
+        className={`rounded-[20px] w-[300px] border-4 ${
+          isInCart ? "border-[hsl(14,86%,42%)]" : "border-transparent"
+        }`}
+      />
+      {CartBtnRendering()}
+    </div>
   );
 };
 
