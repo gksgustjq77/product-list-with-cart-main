@@ -1,10 +1,12 @@
 import type { CartItem } from "../../pages/product";
+import PrimaryButton from "../button/PrimaryButton";
 
 interface UserCartProps {
   list: CartItem[];
+  onClick: () => void;
 }
 
-const ConfirmCart: React.FC<UserCartProps> = ({ list }) => {
+const ConfirmCart: React.FC<UserCartProps> = ({ list, onClick }) => {
   return (
     <>
       <div className="flex flex-col space-y-4 w-full text-left">
@@ -50,6 +52,8 @@ const ConfirmCart: React.FC<UserCartProps> = ({ list }) => {
             delivery
           </span>
         </div>
+
+        <PrimaryButton title="Confirm Order" onClick={onClick} />
       </div>
     </>
   );

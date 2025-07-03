@@ -5,6 +5,7 @@ import ProductTitle from "../components/product/ProductTitle";
 import type { ProductType } from "../type/product";
 import ProductDes from "../components/product/ProductDes";
 import UserCart from "../components/cart/UserCart";
+import CartModal from "../components/cart/CartModal";
 
 type UserCart = {
   [id: number]: number;
@@ -16,11 +17,11 @@ export type CartItem = {
 };
 
 const Product: React.FC = () => {
-  const [productList, setProductList] = useState<ProductType[]>(data);
+  const [productList, _] = useState<ProductType[]>(data);
   const [cart, setCart] = useState<UserCart>({});
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const updateCart = (id: number, action: "add" | "plus" | "minus") => {
-    console.log(action);
     setCart((prev) => {
       const currentQty = prev[id] || 0;
 
@@ -71,7 +72,19 @@ const Product: React.FC = () => {
           ))}
         </div>
       </div>
-      <UserCart list={cartList}></UserCart>
+      <UserCart
+        list={cartList}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
+      ></UserCart>
+      <CartModal
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(!isOpen);
+        }}
+        list={cartList}
+      ></CartModal>
     </div>
   );
 };

@@ -3,9 +3,10 @@ import ConfirmCart from "./ConfirmCart";
 
 interface UserCartProps {
   list: CartItem[];
+  onClick: () => void;
 }
 
-const UserCart: React.FC<UserCartProps> = ({ list }) => {
+const UserCart: React.FC<UserCartProps> = ({ list, onClick }) => {
   console.log("list", list);
 
   const userCartRendering = () => {
@@ -41,7 +42,7 @@ const UserCart: React.FC<UserCartProps> = ({ list }) => {
             )}
             )
           </span>
-          <ConfirmCart list={list} />;
+          <ConfirmCart list={list} onClick={onClick} />;
         </>
       );
     }
