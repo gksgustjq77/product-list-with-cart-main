@@ -29,7 +29,7 @@ const ProductImg: React.FC<ProductImgProps> = ({
       <img
         src={imgUrl.tablet}
         alt="product"
-        className={`rounded-[20px] w-[300px] border-4 ${
+        className={`rounded-[20px] w-[350px] border-4 whitespace-nowrap ${
           isInCart ? "border-[hsl(14,86%,42%)]" : "border-transparent"
         }`}
       />

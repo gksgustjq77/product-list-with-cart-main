@@ -14,5 +14,5 @@ export default {
     lg: "1200px",
   },
 
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

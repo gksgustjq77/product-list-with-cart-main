@@ -26,7 +26,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, list, onClose }) => {
               We hope you enjoy your food!
             </span>
           </div>
-          <div>
+          <div className="max-h-[600px] overflow-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
             {list &&
               list.map((cart, index: number) => (
                 <div
@@ -59,7 +59,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, list, onClose }) => {
                     </div>
                   </div>
                   {index === list.length - 1 && (
-                    <div className="text-left flex justify-between pb-[20px] mt-[10px]">
+                    <div className="text-left flex justify-between pb-[20px] mt-[10px] items-center">
                       <span className=" text-[hsl(12,20%,44%)]">
                         Order Total
                       </span>
@@ -68,7 +68,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, list, onClose }) => {
                         {list
                           .reduce(
                             (sum: number, item: CartItem) =>
-                              sum + item.quantity,
+                              sum + item.quantity * item.product.price,
                             0
                           )
                           .toFixed(2)}
@@ -79,7 +79,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, list, onClose }) => {
               ))}
           </div>
           <button
-            className="mt-4 text-sm text-red-500 hover:underline"
+            className="mt-4 text-sm px-3 py-3 w-full rounded-[20px] border-none text-white bg-[hsl(14,86%,42%)] hover:bg-[hsl(14,86%,37%)] focus:outline-none transition-colors"
             onClick={onClose}
           >
             Start New Order
